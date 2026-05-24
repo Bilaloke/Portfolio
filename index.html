@@ -93,5 +93,47 @@
     <div class="stats"><h3>60</h3><p>Cups of Coffee Drank</p></div>
   </section>
 </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    function downloadPDF() {
+      const title = document.querySelector('.portfolio');
+      title.textContent = 'Generating...';
+      title.style.cursor = 'wait';
+ 
+      html2canvas(document.body, {
+        scale: 1.5,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#121212'
+      }).then(canvas => {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const imgWidth = pageWidth;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        const imgData = canvas.toDataURL('image/jpeg', 0.95);
+ 
+        pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+        let heightLeft = imgHeight - pageHeight;
+ 
+        while (heightLeft > 0) {
+          pdf.addPage();
+          pdf.addImage(imgData, 'JPEG', 0, -(imgHeight - heightLeft), imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+        }
+ 
+        pdf.save('Bilal_Oke_Portfolio.pdf');
+        title.textContent = 'Portfolio';
+        title.style.cursor = 'pointer';
+      }).catch(() => {
+        title.textContent = 'Portfolio';
+        title.style.cursor = 'pointer';
+        alert('Could not generate PDF. Please try in Chrome.');
+      });
+    }
+  </script>
 </body>
 </html>
