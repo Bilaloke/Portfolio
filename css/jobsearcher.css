@@ -1,0 +1,364 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-padding-top: 80px;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    font-family: 'Segoe UI', sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.contain {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 8%;
+    width: 100%;
+    background-color: rgb(30, 77, 77);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 6px;
+    z-index: 1000;
+}
+
+.writings {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    white-space: nowrap;
+    justify-content:right;
+    flex: 1;
+    margin-right: 10px;
+    
+}
+.writings a{
+    text-decoration:underline;
+    color:white;
+    font-weight: 500;
+}
+
+.writings a:hover {
+    opacity: 0.8;
+}
+
+.logo img {
+    height: 110px;
+    margin-left: 15px;
+}
+
+.body{
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(4px);
+    
+}
+.top{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.top h1{
+    margin-top: 10%;
+    font-weight: 800;
+    font-size: 40px;
+}
+.searchbar{
+    background-color:rgb(30, 77, 77) ;
+    width: 50%;
+    border-radius: 20px;
+    height: 40px;
+    margin-top: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.searchbar input{
+    width:84%;
+    height:30px;
+}
+
+.searchbar img{
+    height: 100%;
+    width: 4%;
+}
+
+.searchbar button{
+    background-color: rgb(212, 175, 55);
+    border: none;
+    height:25px;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.searchbar button:hover{
+    cursor: grab;
+}
+
+.locationbar{
+    background-color:rgb(30, 77, 77) ;
+    width: 35%;
+    border-radius: 20px;
+    height: 45px;
+    margin-top: 1%;
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+    gap:10px;
+}
+
+.locationbar input{
+    width:84%;
+    height:30px;
+}
+
+.locationbar img{
+    height: 60%;
+    width: 20px;
+    margin-left: 10px;
+}
+
+.locationbar button{
+    background-color: rgb(212, 175, 55);
+    border: none;
+    height:25px;
+    border-radius: 10px;
+    padding: 6px;
+    margin-right: 10px;
+}
+
+.locationbar button:hover{
+    cursor: grab;
+}
+
+.jobpreviews {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 60vh;
+    margin-top: 40px;
+}
+
+.results-info {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.results-info p {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 20px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: rgb(212, 175, 55);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-state p {
+    font-size: 18px;
+    color: white;
+}
+
+.error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 15px;
+    text-align: center;
+}
+
+.error-state i {
+    font-size: 48px;
+    color: #ff6b6b;
+}
+
+.error-state h3 {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+}
+
+.error-state p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.error-state .btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.error-state .btn-primary {
+    background-color: rgb(212, 175, 55);
+    color: rgb(30, 77, 77);
+    font-weight: 600;
+}
+
+.error-state .btn-primary:hover {
+    opacity: 0.9;
+}
+
+.no-results-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 15px;
+    text-align: center;
+}
+
+.no-results-state i {
+    font-size: 48px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.no-results-state h3 {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+}
+
+.no-results-state p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.vacancies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.vacancy-card {
+    background-color: rgba(30, 77, 77, 0.8);
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vacancy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-color: rgba(30, 77, 77, 0.95);
+}
+
+.vacancy-card h3 {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    color: rgb(212, 175, 55);
+}
+
+.vacancy-card .company {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.vacancy-card .location {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.vacancy-card .description {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.vacancy-card .salary {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(212, 175, 55);
+    margin-bottom: 15px;
+}
+
+.vacancy-card .apply-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(212, 175, 55);
+    color: rgb(30, 77, 77);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.vacancy-card .apply-btn:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .vacancies-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .jobpreviews {
+        padding: 15px;
+    }
+}

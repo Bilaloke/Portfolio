@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login page</title>
+    <link href="Css/login.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="whole">
+      
+      <div class="leftside">
+        <div class="header">
+          
+          <h3><img src="images/cubes.png" height="30px" width="30px"/><b>TheCubeFactory</b></h3>
+           <a href="portfolio.html">Portfolio</a>
+        </div>
+
+        <div class="loginbox">
+          <h2 class="welcome">Welcome back</h2>
+          <p class="firstp">Please enter your details</p>
+          <form>
+            <label for="email">Email address</label>
+            <input type="email" class="email" id="email" />
+            <span id="emailMsg"></span>
+            <label for="password">Password</label>
+            <input type="password" class="pass" id="pwd"/>
+            <span id="pwdMsg"></span>
+
+            <div class="rem-fg">
+              <label class="rem">
+                <input type="checkbox" /> Remember for 30 days</label>
+              <a href="">Forgot password?</a>
+            </div>
+            <button type="button" class="Log-in" onclick="submitLogin();">
+              Sign in
+            </button>
+            <button type="button" class="gglesgn">
+              <img class="google" src="images/google-logo.png" /> Sign in with
+              Google
+            </button>
+
+            <p class="signup">
+              Don't have an account? <a href="signup.html">Sign up</a>
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="rightside">
+        <img class="image" src="images/fullwoman.png" />
+      </div>
+    </div>
+
+    <script src="Javascript/login.js"></script>
+  </body>
+</html>

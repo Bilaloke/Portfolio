@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-up page</title>
+    <link href="Css/signup.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="whole">
+      <div class="leftside">
+        <div class="header">
+          <h3><img src="images/cubes.png" height="30px" width="30px" /><b>TheCubeFactory</b></h3>
+          <a href="portfolio.html">Portfolio</a>
+        </div>
+
+
+        <div class="signupbox">
+          <h2 class="signupsgn">Sign up</h2>
+          <p class="firstp">Please enter your details</p>
+          <form>
+            <label for="name">Name</label>
+            <input type="text" class="name" id="name"/>
+            <label for="dob">Date of birth</label>
+            <input type="date" class="dob" />
+            <label for="numb">Phone number</label>
+            <input type="number" class="numb" />
+            <label for="email">Email address</label>
+            <input type="email" class="email" id="email" />
+            <label for="password">Password</label>
+            <input type="password" class="pass" id="pwd"/>
+
+            <div class="agree">
+              <label class="rem"><input type="checkbox" /> I agree to your terms and conditions</label>
+            </div>
+
+            <button type="button" class="signupbutt" onclick="submitSignIn();" >Sign up</button>
+            <button type="button" class="gglesgn">
+              <img class="google" src="images/google-logo.png" /> Sign up with Google
+            </button>
+             <button type="button" class="applesgn">
+              <img class="apple" src="images/apple.png" /> Sign up with Apple
+            </button>
+            <p class="Login">
+              Have an account? <a href="login.html">Log in</a>
+            </p>
+             <p class="troubles">
+              Having issues signing up? <a href="https://support.google.com/accounts?hl=en&visit_id=638960889468482311-3432616389&rd=2&p=account_iph#topic=3382296">Help</a>
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="rightside">
+        <img class="image" src="images/fullwoman.png" />
+      </div>
+    </div>
+
+    <script src="Javascript/signup.js"></script>
+  </body>
+</html>

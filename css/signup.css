@@ -1,0 +1,350 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #deb1fa;
+}
+
+.whole {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    min-height: 700px;
+    box-shadow: 0 0 20px rgba(60, 4, 99, 0.497);
+    overflow: hidden;
+    background-color: rgb(255, 255, 255, 0.5);
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.leftside {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 60px;
+    min-width: 0;
+}
+
+.rightside {
+    flex: 1;
+    background-color: #dcd6f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 40px;
+    gap: 10px;
+    background-color: rgb(255, 255, 255, 1);
+    border-radius: 5px;
+    justify-content: space-between;
+    padding: 0 10px 0 0;
+}
+
+.Login {
+    text-align: center;
+    margin-top: 20px;
+    font-size: clamp(12px, 2vw, 14px);
+}
+
+.Login a {
+    color: #6a0dad;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.Login a:hover {
+    text-decoration: underline;
+}
+
+.header img {
+    flex-shrink: 0;
+    border-radius: 5px 0 0 5px;
+}
+
+.header h3 {
+    font-size: clamp(16px, 2vw, 20px);
+}
+
+.signupbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 450px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.signupsgn {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: clamp(24px, 4vw, 32px);
+}
+
+.firstp {
+    color: grey;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: clamp(14px, 2vw, 16px);
+}
+
+.secondp {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+form {
+    width: 100%;
+}
+
+form label {
+    display: block;
+    margin: 12px 0 5px;
+    font-weight: 500;
+    font-size: clamp(13px, 2vw, 14px);
+}
+
+.agree {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    font-size: clamp(11px, 1.5vw, 12px);
+    width: 100%;
+    gap: 8px;
+}
+
+.agree label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.agree input[type="checkbox"] {
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.signupbutt {
+    width: 100%;
+    padding: 12px;
+    background-color: #6a0dad;
+    color: white;
+    border-radius: 5px;
+    font-size: clamp(14px, 2vw, 16px);
+    margin-bottom: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.signupbutt:hover {
+    background-color: #5a0c9d;
+}
+
+.gglesgn, .applesgn {
+    width: 100%;
+    padding: 12px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: clamp(12px, 2vw, 14px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.gglesgn:hover, .applesgn:hover {
+    background-color: #f8f8f8;
+}
+
+.troubles {
+    text-align: center;
+    margin-top: 15px;
+    font-size: clamp(12px, 2vw, 13px);
+    line-height: 1.5;
+}
+
+.troubles a {
+    color: #6a0dad;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.troubles a:hover {
+    text-decoration: underline;
+}
+
+.google {
+    height: 18px;
+    width: 18px;
+    flex-shrink: 0;
+}
+
+.apple {
+    height: 20px;
+    width: 20px;
+    flex-shrink: 0;
+}
+
+.email, .pass, .name, .dob, .numb {
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: clamp(14px, 2vw, 16px);
+}
+
+.email:focus, .pass:focus, .name:focus, .dob:focus, .numb:focus {
+    outline: none;
+    border-color: #6a0dad;
+    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.1);
+}
+
+
+/*I used the assistace of ai to generate this part for diff screen sizes*/
+/* Tablet screens */
+@media (max-width: 900px) {
+    .whole {
+        width: 95%;
+    }
+    
+    .leftside {
+        padding: 30px 40px;
+    }
+    
+    .rightside {
+        flex: 0.8;
+    }
+}
+
+/* Small tablets and large phones */
+@media (max-width: 720px) {
+    .whole {
+        flex-direction: column;
+        width: 95%;
+        min-height: auto;
+        margin: 10px;
+    }
+    
+    .rightside {
+        display: none;
+    }
+    
+    .leftside {
+        padding: 30px 25px;
+    }
+    
+    .signupbox {
+        max-width: 100%;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    body {
+        background-color: white;
+    }
+    
+    .whole {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+        min-height: 100vh;
+    }
+    
+    .leftside {
+        padding: 20px;
+        justify-content: flex-start;
+    }
+    
+    .header {
+        margin-bottom: 30px;
+    }
+    
+    .header img {
+        height: 25px;
+        width: 25px;
+    }
+    
+    .signupbox {
+        padding-top: 10px;
+    }
+    
+    .signupsgn {
+        margin-bottom: 8px;
+    }
+    
+    .firstp {
+        margin-bottom: 15px;
+    }
+    
+    .email, .pass, .name, .dob, .numb {
+        height: 45px;
+    }
+    
+    form label {
+        margin: 10px 0 5px;
+    }
+    
+    .agree {
+        margin-top: 8px;
+        margin-bottom: 12px;
+    }
+    
+    .signupbutt, .gglesgn, .applesgn {
+        padding: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .troubles {
+        margin-top: 12px;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 360px) {
+    .leftside {
+        padding: 15px;
+    }
+    
+    .header h3 {
+        font-size: 16px;
+    }
+    
+    .signupsgn {
+        font-size: 22px;
+    }
+    
+    .gglesgn, .applesgn {
+        font-size: 11px;
+        padding: 12px 8px;
+    }
+}

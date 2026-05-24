@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job searcher</title>
+    <link href="Css/jobsearcher.css" rel="stylesheet">
+    <style>
+        html{
+            background-image:url(Image/background.png);
+        }
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <section class="header">
+          <div class="logo">
+            <a href=""><img src="Image/taxwise.png" /></a>
+          </div>
+          <div class="writings">
+            <a href="portfolio.html">Portfolio</a>
+            <a href="Jobsearch.html">Home</a>
+            <a href="taxcalc.html">Take Home Pay Calculator </a>
+          </div>
+        </section>
+        </div>
+    <div class="body">
+        <section class="top">
+            <h1>Search for Job vacancies in the UK</h1>
+            <div class="searchbar"><img src="Image/search.png"><input  placeholder="Occupation" type="text" required><button type="button">Search</button></div>
+            <div class="locationbar"><img src="Image/location.png"><input placeholder="Enter your location" type="text"><button type="button">Go</button></div>
+        </section>
+        <section class="jobpreviews">
+            <div class="results-info" id="resultsInfo">
+                <p id="resultsCount"></p>
+            </div>
+
+            <div class="loading-state" id="loadingState">
+                <div class="spinner"></div>
+                <p>Fetching vacancies...</p>
+            </div>
+
+            <div class="error-state" id="errorState" style="display: none;">
+                <h3>Oops! Something went wrong</h3>
+                <p id="errorMessage">Unable to fetch job vacancies. Please try again later.</p>
+                <button class="btn-primary" onclick="location.reload()">
+                    Retry
+                </button>
+            </div>
+
+            <div class="no-results-state" id="noResultsState" style="display: none;">
+                <h3>No results found</h3>
+                <p>Try adjusting your search terms or filters</p>
+            </div>
+
+            <div class="vacancies-grid" id="vacanciesGrid">
+            </div>
+        </div>
+        </section>
+        </section>
+</div>
+    <script src="Js/jobsearcher.js"></script>
+</body>
+</html>
