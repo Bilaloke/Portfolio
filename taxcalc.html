@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tax calculator</title>
+    <title>Tax Calculator – TaxWise</title>
     <link href="css/taxcalc.css" rel="stylesheet" />
     <style>
       html {
@@ -15,78 +15,86 @@
     </style>
   </head>
   <body>
+
+    
     <section class="header">
-          <div class="logo">
-            <a href=""><img src="image/taxwise.png" /></a>
-          </div>
-          <div class="writings">
-            <a href="index.html">Portfolio</a>
-            <a href="Jobsearch.html">Home</a>
-            <a href="jobsearcher.html">Job searcher </a>
-          </div>
-        </section>
+      <div class="logo">
+        <a href="Jobsearch.html"><img src="image/taxwise.png" alt="TaxWise logo" /></a>
+      </div>
+
+     
+      <nav class="writings" aria-label="Main navigation">
+        <a href="index.html">Portfolio</a>
+        <a href="Jobsearch.html">Home</a>
+        <a href="jobsearcher.html">Job Searcher</a>
+      </nav>
+
+      
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </section>
+
+   
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html">Portfolio</a>
+      <a href="Jobsearch.html">Home</a>
+      <a href="jobsearcher.html">Job Searcher</a>
+    </nav>
+
+   
     <div class="leftside">
       <h2>Fill in your details</h2>
       <form class="details-form">
-        <label for="job">Occupation</label>
-        <input
-          type="text"
-          id="job"
-          class="job"
-          placeholder="Enter your occupation"
-          required
-        />
 
-        <label for="hours">Hours per week</label>
-        <input
-          type="number"
-          id="hours"
-          class="hours"
-          placeholder="Enter hours per week"
-          min="20"
-          max="60"
-        />
+        <div>
+          <label for="job">Occupation</label>
+          <input type="text" id="job" placeholder="Enter your occupation" required />
+        </div>
+
+        <div>
+          <label for="hours">Hours per week</label>
+          <input type="number" id="hours" placeholder="Enter hours per week" min="1" max="80" />
+        </div>
 
         <div class="pay">
-            <div class="paycont">
-        <label for="income">Income</label>
-        <input
-          type="number"
-          class="income"
-          id="income"
-          placeholder="Enter your income"
-          required
-        />
-    </div>
-        <div class="paycont">
-        <select id="pay" name="Pay">
-          <option value="hourly">Hourly</option>
-          <option value="weekly">Weekly</option>
-          <option value="monthly">Monthly</option>
-          <option value="yearly">Yearly</option>
-        </select>
-       </div>
-    </div>
-
-        <label for="tax">Tax rate</label>
-        <input type="number" id="tax" required  step="0.10" placeholder="Enter your tax rate" />
-
-        <label for="insurance">Insurance rate</label>
-        <input
-          type="number"
-          id="insurance"
-          step="0.10"
-          placeholder="Enter your insurance rate"
-          required
-        />
-        <div id="alert">
+          <div class="paycont" style="flex: 2;">
+            <label for="income">Income</label>
+            <input type="number" id="income" placeholder="Enter your income" required />
+          </div>
+          <div class="paycont" style="flex: 1;">
+            <label for="pay">Per</label>
+            <select id="pay" name="Pay">
+              <option value="hourly">Hourly</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="yearly">Yearly</option>
+            </select>
+          </div>
         </div>
-        <button  type="button" onclick="taxCalculator();">Calculate now</button>
+
+        <div>
+          <label for="tax">Tax rate (%)</label>
+          <input type="number" id="tax" step="0.10" placeholder="e.g. 20" required />
+        </div>
+
+        <div>
+          <label for="insurance">National Insurance rate (%)</label>
+          <input type="number" id="insurance" step="0.10" placeholder="e.g. 12" required />
+        </div>
+
+        <div id="alert"></div>
+
+        <button type="button" onclick="taxCalculator();">Calculate now</button>
       </form>
     </div>
 
-    <div class="rightside">
-    </div>
+   
+    <div class="rightside"></div>
+
     <script src="Js/taxcalc.js"></script>
+    <script src="Js/navbar.js"></script>
   </body>
 </html>
