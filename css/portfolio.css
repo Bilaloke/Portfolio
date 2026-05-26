@@ -284,17 +284,11 @@ a {
     width: 100%;
     max-width: 100%;
   }
-  .tippytop{
-  padding-top:8px ;
-  padding-bottom:6px ;
-  display:flex;
-  background-color: #1a1a1a;
-  margin: auto;
-  text-align: center;
-  justify-content: center;
-  position: sticky;
-  top:0;
-  z-index: 1000;
+  .tippytop {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
   .aboutbut{
   font-size:15px;
   padding:6px;
@@ -336,18 +330,11 @@ a {
     align-items: center;
     text-align: center;
   }
-    .tippytop{
-  padding-top:8px ;
-  padding-bottom:6px ;
-  display:flex;
-  background-color: #1a1a1a;
-  margin: auto;
-  text-align: center;
-  justify-content: center;
-  position: sticky;
-  top:0;
-  z-index: 1000;
-}
+    .tippytop {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
  
   .about-img {
     width: 160px;
