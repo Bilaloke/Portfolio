@@ -15,15 +15,15 @@
         <div class="projectover" onclick = "location.href='#proj'">Project overview</div>
       </div>
   <header class="top">
-      
-     <h1 class="portfolio" onclick="downloadPDF()" title="Click to download PDF">Portfolio</h1>
     
     <div class="top-content">
       <img class="top-img" src="image/profile1.jpeg"  />
       <h1 class="name">Bilal Oke</h1>
-      <h2>I am a devoloper</h2>
-      <p>I recently piqued interest in the field of web/app development/design, since there are a bunch of problems to be solved why not be
-                 a developer. And now i am proud to say, i am on my journey to becoming a full fledged developer.</p>
+      <h2>Emerging Full-Stack Developer</h2>
+      <p>My entry into web and app development was driven by the understanding that technology solves real-world problems,
+        and developers lead that charge. That insight shaped my commitment to the field. I have since dedicated myself to
+        continuous skill development, hands-on project work, and expanding my technical capabilities. For me, development
+        is not merely a profession but a commitment to creating solutions that deliver lasting value.</p>
     </div>
   </header>
 
@@ -31,11 +31,12 @@
     <img class="about-img" src="image/profile2.jpeg"/>
     <div class="about-body">
       <h2>ABOUT ME</h2>
-      <p>I am Bilal Oke a student at Aptech Institute of Technology, I am currently taking the ADCSE course.
-     I have a sufficient knowledge in using Figma for UIUX, C programming language, web development, Databases and more.</p>
+      <p>I am Bilal Oke, a software development student at Aptech Institute of Technology, where I am pursuing the
+        Advanced Diploma in Computer Software Engineering. I have developed hands-on experience across UI/UX design with Figma
+        , web development, the C programming language, databases and more.</p>
       <ul>
         <li><strong>Name:</strong> Bilal Oke</li>
-        <li><strong>Birthday:</strong> 31st March, 2008</li>
+        <li><strong>DOB:</strong> 31st March, 2008</li>
         <li><strong>Address:</strong> 6b, Ojo Oyewo Road, Lekki</li>
         <li><strong>Phone:</strong> <a href="tel:+2349073433669">📞Contact</a></li>
         <li><strong>Email:</strong> <a href="mailto:oke.student123@gmail.com">📩Email</a></li>
@@ -46,8 +47,12 @@
 
   <section id="skills" class="skills">
     <h2>SKILL AREA</h2>
-    <p>I have a very strong set of communication skills, i know how to relate with people properly.I am a very good listener, listens to the complaints of fellow 
-        colleagues and makes improvements. i am very honest in my work, offers complete transparency, no lies whatsoever told.</p>
+    <p>Great development goes beyond writing code. I bring strong communication skills to every team I work with,
+      actively listening to colleagues, taking feedback seriously and turning it into meaningful improvements.
+      I hold myself to a high standard of honesty and transparency — because the best work is built on trust.<br>
+    The following represents my current technical skill set, each rated on a scale of 0 to 100%. These ratings are
+      evaluated through a combination of academic assessment by my lecturers, satisfied clients and AI-based analysis,
+      reflecting my practical experience and confidence with each technology.</p>
     <div class="skill-bars">
       <div class="skill"><span>Figma</span><div class="bar"><div style="width: 90%;"></div></div></div>
       <div class="skill"><span>HTML</span><div class="bar"><div style="width: 85%;"></div></div></div>
@@ -89,51 +94,9 @@
   <section id="proj" class="status">
     <div class="stats"><h3>10+</h3><p>Projects Completed</p></div>
     <div class="stats"><h3>1+</h3><p>Happy Clients</p></div>
-    <div class="stats"><h3>0</h3><p>Awards Won</p></div>
     <div class="stats"><h3>60</h3><p>Cups of Coffee Drank</p></div>
   </section>
 </div>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script>
-    function downloadPDF() {
-      const title = document.querySelector('.portfolio');
-      title.textContent = 'Generating...';
-      title.style.cursor = 'wait';
- 
-      html2canvas(document.body, {
-        scale: 1.5,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#121212'
-      }).then(canvas => {
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
-        const imgWidth = pageWidth;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        const imgData = canvas.toDataURL('image/jpeg', 0.95);
- 
-        pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
-        let heightLeft = imgHeight - pageHeight;
- 
-        while (heightLeft > 0) {
-          pdf.addPage();
-          pdf.addImage(imgData, 'JPEG', 0, -(imgHeight - heightLeft), imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-        }
- 
-        pdf.save('Bilal_Oke_Portfolio.pdf');
-        title.textContent = 'Portfolio';
-        title.style.cursor = 'pointer';
-      }).catch(() => {
-        title.textContent = 'Portfolio';
-        title.style.cursor = 'pointer';
-        alert('Could not generate PDF. Please try in Chrome.');
-      });
-    }
-  </script>
 </body>
 </html>
