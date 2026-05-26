@@ -1,4 +1,5 @@
 body {
+  overflow-x: hidden;
   font-family: 'Segoe UI', sans-serif;
   color: #fff;
   background-color: #121212;
@@ -8,7 +9,6 @@ body {
   padding: 0;
 }
 .whole {
-  overflow-x: hidden;
   background-color: #121212;
   margin: 0;
   padding: 0;
@@ -250,6 +250,8 @@ a {
 
 
 @media (max-width: 720px){
+  body{overflow-x: hidden;}
+  .whole{overflow-x: hidden;}
    .about-img {
   width: 200px;
   border-radius: 10px;
@@ -321,6 +323,8 @@ a {
 }
 
   @media (max-width: 480px) {
+    body{overflow-x: hidden;}
+  .whole{overflow-x: hidden;}
   .about {
     flex-direction: column;
     align-items: center;
