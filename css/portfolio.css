@@ -324,6 +324,24 @@ a {
   color: #fff;
 }
 
+.back-arrow {
+  display: inline-block;
+  margin: 20px 0 0 20px;
+  color: #ff3c3c;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #ff3c3c;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-arrow:hover {
+  background-color: #ff3c3c;
+  color: #fff;
+}
+
 
 @media (max-width: 720px){
   body{overflow-x: hidden;}
