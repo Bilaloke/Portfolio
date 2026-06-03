@@ -158,7 +158,7 @@ a {
 .about {
   display: flex;
   flex-wrap: wrap;
-  padding: 40px 20px;
+  padding: 40px 35px;
   background-color: #181818;
 }
 
@@ -182,7 +182,7 @@ a {
 }
 
 .skills {
-  padding: 40px 20px;
+  padding: 40px 35px;
   background-color: #1f1f1f;
 }
 
@@ -350,6 +350,7 @@ a {
   border-radius: 10px;
   margin-right: 20px;
   height:300px;
+  padding: 40px 20px;
 }
   .all {
     flex-direction: column;
@@ -388,6 +389,9 @@ a {
   white-space: nowrap;
    margin-left:20px;
 }
+  .skills{
+      padding: 40px 20px;
+    }
 .mywork{
   font-size:15px;
   padding:6px;
@@ -413,6 +417,7 @@ a {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 40px 20px;
   }
     .tippytop {
     position: sticky;
@@ -428,7 +433,10 @@ a {
   .about-body {
     text-align: left;
   }
- 
+
+    .skills{
+      padding: 40px 20px;
+    }
 
  
   .cont a {
