@@ -74,7 +74,7 @@ body {
 .cont{
   text-align: center;
   justify-content: center;
-  padding-bottom:20px;
+  margin-bottom:40px;
 }
 .cont a {
   text-decoration: none;
