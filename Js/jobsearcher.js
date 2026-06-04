@@ -38,9 +38,9 @@ function searchJobs(job, location) {
   resultsCount.textContent     = "";
 
   let params = new URLSearchParams({
-    keywords:        job,
-    resultsToTake:   20,
-    resultsToSkip:   0,
+    what:          job,
+    resultsToTake: 20,
+    resultsToSkip: 0,
   });
 
   if (location !== "") {
@@ -70,14 +70,14 @@ function searchJobs(job, location) {
       resultsCount.textContent = "Showing " + jobs.length + " of " + total.toLocaleString() + " UK vacancies";
 
       jobs.forEach(function (job) {
-        let card        = document.createElement("div");
-        card.className  = "vacancy-card";
+        let card       = document.createElement("div");
+        card.className = "vacancy-card";
 
-        let title       = escapeHtml(job.jobTitle        || "Job Title Not Available");
-        let company     = escapeHtml(job.employerName    || "Company Not Specified");
-        let loc         = escapeHtml(job.locationName    || "Location Not Specified");
-        let description = escapeHtml(job.jobDescription  || "No description available");
-        let jobLink     = job.jobUrl                     || "#";
+        let title       = escapeHtml(job.jobTitle       || "Job Title Not Available");
+        let company     = escapeHtml(job.employerName   || "Company Not Specified");
+        let loc         = escapeHtml(job.locationName   || "Location Not Specified");
+        let description = escapeHtml(job.jobDescription || "No description available");
+        let jobLink     = job.jobUrl                    || "#";
         let salary      = formatSalary(job.minimumSalary, job.maximumSalary);
         let postedDate  = formatDate(job.date);
         let jobType     = job.jobType ? escapeHtml(job.jobType) : "";
@@ -116,8 +116,15 @@ function formatSalary(min, max) {
 
 function formatDate(dateStr) {
   if (!dateStr) return "";
-  let d   = new Date(dateStr);
-  let now = new Date();
+  let parts = dateStr.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+  let d;
+  if (parts) {
+    d = new Date(parts[3], parts[2] - 1, parts[1]);
+  } else {
+    d = new Date(dateStr);
+  }
+  if (isNaN(d.getTime())) return "";
+  let now      = new Date();
   let diffDays = Math.floor((now - d) / 86400000);
   if (diffDays === 0) return "today";
   if (diffDays === 1) return "yesterday";
