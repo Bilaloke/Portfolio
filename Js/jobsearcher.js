@@ -30,6 +30,13 @@ locationButton.addEventListener("click", function () {
 searchInput.addEventListener("keydown",   function (e) { if (e.key === "Enter") searchButton.click(); });
 locationInput.addEventListener("keydown", function (e) { if (e.key === "Enter") locationButton.click(); });
 
+function titleMatches(jobTitle, searchTerm) {
+  let title  = jobTitle.toLowerCase();
+  let search = searchTerm.toLowerCase().trim();
+  let words  = search.split(/\s+/);
+  return words.every(function (word) { return title.includes(word); });
+}
+
 function searchJobs(job, location) {
   loadingState.style.display   = "flex";
   errorState.style.display     = "none";
@@ -38,8 +45,8 @@ function searchJobs(job, location) {
   resultsCount.textContent     = "";
 
   let params = new URLSearchParams({
-    what:          job,
-    resultsToTake: 20,
+    keywords:      job,
+    resultsToTake: 100,
     resultsToSkip: 0,
   });
 
@@ -59,15 +66,18 @@ function searchJobs(job, location) {
     })
     .then(function (data) {
       loadingState.style.display = "none";
-      let jobs = data.results || [];
+      let allJobs = data.results || [];
+
+      let jobs = allJobs.filter(function (j) {
+        return titleMatches(j.jobTitle || "", job);
+      });
 
       if (jobs.length === 0) {
         noResultsState.style.display = "flex";
         return;
       }
 
-      let total = data.totalResults || jobs.length;
-      resultsCount.textContent = "Showing " + jobs.length + " of " + total.toLocaleString() + " UK vacancies";
+      resultsCount.textContent = "Showing " + jobs.length + " results for \"" + job + "\"" + (location ? " near " + location : "");
 
       jobs.forEach(function (job) {
         let card       = document.createElement("div");
