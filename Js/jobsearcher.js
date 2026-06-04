@@ -1,4 +1,5 @@
-const PROXY_URL = "http://localhost:3000/jobs";
+const REED_API_KEY = "6d2c6e9d-9472-4b55-b6a0-d7d838a1c2aa";
+const REED_BASE    = "https://corsproxy.io/?url=https://www.reed.co.uk/api/1.0/search";
 
 let searchInput    = document.querySelector(".searchbar input");
 let searchButton   = document.querySelector(".searchbar button");
@@ -36,13 +37,22 @@ function searchJobs(job, location) {
   vacanciesGrid.innerHTML      = "";
   resultsCount.textContent     = "";
 
-  let params = new URLSearchParams({ keywords: job });
+  let params = new URLSearchParams({
+    keywords:        job,
+    resultsToTake:   20,
+    resultsToSkip:   0,
+  });
+
   if (location !== "") {
-    params.set("locationName", location);
+    params.set("locationName",         location);
     params.set("distancefromLocation", 15);
   }
 
-  fetch(PROXY_URL + "?" + params.toString())
+  let apiUrl  = REED_BASE + "&" + params.toString();
+  let headers = new Headers();
+  headers.set("Authorization", "Basic " + btoa(REED_API_KEY + ":"));
+
+  fetch(apiUrl, { headers: headers })
     .then(function (response) {
       if (!response.ok) throw new Error("Server error: " + response.status);
       return response.json();
@@ -91,7 +101,7 @@ function searchJobs(job, location) {
       loadingState.style.display = "none";
       errorState.style.display   = "flex";
       let msg = document.getElementById("errorMessage");
-      if (msg) msg.textContent = "Unable to fetch job vacancies. Make sure the proxy server is running.";
+      if (msg) msg.textContent = "Unable to fetch job vacancies. Please check your connection and try again.";
       console.error("Job search error:", error);
     });
 }
