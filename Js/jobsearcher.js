@@ -1,4 +1,4 @@
-const REED_API_KEY = "6d2c6e9d-9472-4b55-b6a0-d7d838a1c2aa";
+const PROXY_URL = "http://localhost:3000/jobs";
 
 let searchInput    = document.querySelector(".searchbar input");
 let searchButton   = document.querySelector(".searchbar button");
@@ -15,19 +15,13 @@ let jobLocation = "";
 
 searchButton.addEventListener("click", function () {
   jobTitle = searchInput.value.trim();
-  if (jobTitle === "") {
-    alert("Please enter a job title");
-    return;
-  }
+  if (jobTitle === "") { alert("Please enter a job title"); return; }
   jobLocation = locationInput.value.trim();
   searchJobs(jobTitle, jobLocation);
 });
 
 locationButton.addEventListener("click", function () {
-  if (jobTitle === "") {
-    alert("Please enter a job title first");
-    return;
-  }
+  if (jobTitle === "") { alert("Please enter a job title first"); return; }
   jobLocation = locationInput.value.trim();
   searchJobs(jobTitle, jobLocation);
 });
@@ -42,31 +36,19 @@ function searchJobs(job, location) {
   vacanciesGrid.innerHTML      = "";
   resultsCount.textContent     = "";
 
-  let params = new URLSearchParams({
-    keywords:           job,
-    resultsToTake:      20,
-    resultsToSkip:      0,
-  });
-
+  let params = new URLSearchParams({ keywords: job });
   if (location !== "") {
     params.set("locationName", location);
     params.set("distancefromLocation", 15);
   }
 
-  let apiUrl = "https://www.reed.co.uk/api/1.0/search?" + params.toString();
-
-
-  let headers = new Headers();
-  headers.set("Authorization", "Basic " + btoa(REED_API_KEY + ":"));
-
-  fetch(apiUrl, { headers: headers })
+  fetch(PROXY_URL + "?" + params.toString())
     .then(function (response) {
-      if (!response.ok) throw new Error("API error: " + response.status);
+      if (!response.ok) throw new Error("Server error: " + response.status);
       return response.json();
     })
     .then(function (data) {
       loadingState.style.display = "none";
-
       let jobs = data.results || [];
 
       if (jobs.length === 0) {
@@ -75,12 +57,11 @@ function searchJobs(job, location) {
       }
 
       let total = data.totalResults || jobs.length;
-      resultsCount.textContent =
-        "Showing " + jobs.length + " of " + total.toLocaleString() + " UK vacancies";
+      resultsCount.textContent = "Showing " + jobs.length + " of " + total.toLocaleString() + " UK vacancies";
 
       jobs.forEach(function (job) {
-        let card = document.createElement("div");
-        card.className = "vacancy-card";
+        let card        = document.createElement("div");
+        card.className  = "vacancy-card";
 
         let title       = escapeHtml(job.jobTitle        || "Job Title Not Available");
         let company     = escapeHtml(job.employerName    || "Company Not Specified");
@@ -91,9 +72,7 @@ function searchJobs(job, location) {
         let postedDate  = formatDate(job.date);
         let jobType     = job.jobType ? escapeHtml(job.jobType) : "";
 
-        if (description.length > 160) {
-          description = description.substring(0, 160) + "…";
-        }
+        if (description.length > 160) description = description.substring(0, 160) + "…";
 
         card.innerHTML =
           "<h3>" + title + "</h3>" +
@@ -111,11 +90,8 @@ function searchJobs(job, location) {
     .catch(function (error) {
       loadingState.style.display = "none";
       errorState.style.display   = "flex";
-
       let msg = document.getElementById("errorMessage");
-      if (msg) {
-        msg.textContent = "Unable to fetch job vacancies. Please check your connection and try again.";
-      }
+      if (msg) msg.textContent = "Unable to fetch job vacancies. Make sure the proxy server is running.";
       console.error("Job search error:", error);
     });
 }
@@ -148,7 +124,6 @@ function escapeHtml(str) {
 }
 
 function escapeUrl(url) {
-
   if (!url || url === "#") return "#";
   if (url.startsWith("http://") || url.startsWith("https://")) return url;
   return "#";
