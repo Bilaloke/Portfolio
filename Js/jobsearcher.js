@@ -11,29 +11,21 @@ let errorState     = document.getElementById("errorState");
 let noResultsState = document.getElementById("noResultsState");
 let resultsCount   = document.getElementById("resultsCount");
 
-let jobTitle    = "";
-let jobLocation = "";
+function triggerSearch() {
+  let job      = searchInput.value.trim();
+  let location = locationInput.value.trim();
+  if (job === "") { alert("Please enter a job title"); return; }
+  searchJobs(job, location);
+}
 
-searchButton.addEventListener("click", function () {
-  jobTitle = searchInput.value.trim();
-  if (jobTitle === "") { alert("Please enter a job title"); return; }
-  jobLocation = locationInput.value.trim();
-  searchJobs(jobTitle, jobLocation);
-});
-
-locationButton.addEventListener("click", function () {
-  if (jobTitle === "") { alert("Please enter a job title first"); return; }
-  jobLocation = locationInput.value.trim();
-  searchJobs(jobTitle, jobLocation);
-});
-
-searchInput.addEventListener("keydown",   function (e) { if (e.key === "Enter") searchButton.click(); });
-locationInput.addEventListener("keydown", function (e) { if (e.key === "Enter") locationButton.click(); });
+searchButton.addEventListener("click", triggerSearch);
+locationButton.addEventListener("click", triggerSearch);
+searchInput.addEventListener("keydown",   function (e) { if (e.key === "Enter") triggerSearch(); });
+locationInput.addEventListener("keydown", function (e) { if (e.key === "Enter") triggerSearch(); });
 
 function titleMatches(jobTitle, searchTerm) {
   let title  = jobTitle.toLowerCase();
-  let search = searchTerm.toLowerCase().trim();
-  let words  = search.split(/\s+/);
+  let words  = searchTerm.toLowerCase().trim().split(/\s+/);
   return words.every(function (word) { return title.includes(word); });
 }
 
@@ -77,20 +69,22 @@ function searchJobs(job, location) {
         return;
       }
 
-      resultsCount.textContent = "Showing " + jobs.length + " results for \"" + job + "\"" + (location ? " near " + location : "");
+      resultsCount.textContent =
+        "Showing " + jobs.length + " results for \"" + job + "\"" +
+        (location ? " near " + location : " across the UK");
 
-      jobs.forEach(function (job) {
+      jobs.forEach(function (j) {
         let card       = document.createElement("div");
         card.className = "vacancy-card";
 
-        let title       = escapeHtml(job.jobTitle       || "Job Title Not Available");
-        let company     = escapeHtml(job.employerName   || "Company Not Specified");
-        let loc         = escapeHtml(job.locationName   || "Location Not Specified");
-        let description = escapeHtml(job.jobDescription || "No description available");
-        let jobLink     = job.jobUrl                    || "#";
-        let salary      = formatSalary(job.minimumSalary, job.maximumSalary);
-        let postedDate  = formatDate(job.date);
-        let jobType     = job.jobType ? escapeHtml(job.jobType) : "";
+        let title       = escapeHtml(j.jobTitle       || "Job Title Not Available");
+        let company     = escapeHtml(j.employerName   || "Company Not Specified");
+        let loc         = escapeHtml(j.locationName   || "Location Not Specified");
+        let description = escapeHtml(j.jobDescription || "No description available");
+        let jobLink     = j.jobUrl                    || "#";
+        let salary      = formatSalary(j.minimumSalary, j.maximumSalary);
+        let postedDate  = formatDate(j.date);
+        let jobType     = j.jobType ? escapeHtml(j.jobType) : "";
 
         if (description.length > 160) description = description.substring(0, 160) + "…";
 
@@ -127,15 +121,9 @@ function formatSalary(min, max) {
 function formatDate(dateStr) {
   if (!dateStr) return "";
   let parts = dateStr.match(/(\d{2})\/(\d{2})\/(\d{4})/);
-  let d;
-  if (parts) {
-    d = new Date(parts[3], parts[2] - 1, parts[1]);
-  } else {
-    d = new Date(dateStr);
-  }
+  let d = parts ? new Date(parts[3], parts[2] - 1, parts[1]) : new Date(dateStr);
   if (isNaN(d.getTime())) return "";
-  let now      = new Date();
-  let diffDays = Math.floor((now - d) / 86400000);
+  let diffDays = Math.floor((new Date() - d) / 86400000);
   if (diffDays === 0) return "today";
   if (diffDays === 1) return "yesterday";
   if (diffDays < 7)   return diffDays + " days ago";
