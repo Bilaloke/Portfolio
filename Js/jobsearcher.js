@@ -1,12 +1,7 @@
-// ─────────────────────────────────────────────────────────────
-//  Adzuna UK Jobs API
-//  Free registration at: https://developer.adzuna.com/
-//  Replace the two values below with your own credentials.
-// ─────────────────────────────────────────────────────────────
-const ADZUNA_APP_ID  = "YOUR_APP_ID";   // ← paste your App ID here
-const ADZUNA_APP_KEY = "YOUR_APP_KEY";  // ← paste your App Key here
 
-// ── DOM refs ──────────────────────────────────────────────────
+const ADZUNA_APP_ID  = "499c1fa0";  
+const ADZUNA_APP_KEY = "cbae9a34699dd5187f24f07463a23aa9"; 
+
 let searchInput    = document.querySelector(".searchbar input");
 let searchButton   = document.querySelector(".searchbar button");
 let locationInput  = document.querySelector(".locationbar input");
@@ -20,7 +15,7 @@ let resultsCount   = document.getElementById("resultsCount");
 let jobTitle    = "";
 let jobLocation = "";
 
-// ── Event listeners ───────────────────────────────────────────
+
 searchButton.addEventListener("click", function () {
   jobTitle = searchInput.value.trim();
 
@@ -29,7 +24,7 @@ searchButton.addEventListener("click", function () {
     return;
   }
 
-  jobLocation = locationInput.value.trim(); // pick up any location already typed
+  jobLocation = locationInput.value.trim(); 
   searchJobs(jobTitle, jobLocation);
 });
 
@@ -43,7 +38,7 @@ locationButton.addEventListener("click", function () {
   searchJobs(jobTitle, jobLocation);
 });
 
-// Allow pressing Enter in either input field
+
 searchInput.addEventListener("keydown", function (e) {
   if (e.key === "Enter") searchButton.click();
 });
@@ -51,29 +46,28 @@ locationInput.addEventListener("keydown", function (e) {
   if (e.key === "Enter") locationButton.click();
 });
 
-// ── Core search function ───────────────────────────────────────
+
 function searchJobs(job, location) {
-  // Show loading, hide everything else
+  
   loadingState.style.display   = "flex";
   errorState.style.display     = "none";
   noResultsState.style.display = "none";
   vacanciesGrid.innerHTML      = "";
   resultsCount.textContent     = "";
 
-  // Build the Adzuna endpoint
-  // Docs: https://api.adzuna.com/v1/api/jobs/gb/search/1
+ 
   let params = new URLSearchParams({
     app_id:           ADZUNA_APP_ID,
     app_key:          ADZUNA_APP_KEY,
     results_per_page: 20,
     what:             job,
     content_type:     "application/json",
-    sort_by:          "date",         // most recent first
+    sort_by:          "date",         
   });
 
   if (location !== "") {
     params.set("where", location);
-    params.set("distance", 30);       // km radius around the location
+    params.set("distance", 30);      
   }
 
   let apiUrl = "https://api.adzuna.com/v1/api/jobs/gb/search/1?" + params.toString();
@@ -148,7 +142,7 @@ function searchJobs(job, location) {
     });
 }
 
-// ── Helpers ────────────────────────────────────────────────────
+
 function formatSalary(min, max) {
   if (!min && !max) return "";
   let fmt = function (n) {
