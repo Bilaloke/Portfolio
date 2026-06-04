@@ -53,7 +53,7 @@ function searchJobs(job, location) {
     params.set("distancefromLocation", 15);
   }
 
-  let apiUrl = "https:
+  let apiUrl = "https://www.reed.co.uk/api/1.0/search?" + params.toString();
 
 
   let headers = new Headers();
@@ -114,14 +114,7 @@ function searchJobs(job, location) {
 
       let msg = document.getElementById("errorMessage");
       if (msg) {
-        if (REED_API_KEY === "6d2c6e9d-9472-4b55-b6a0-d7d838a1c2aa") {
-          msg.textContent =
-            "API key not set. Register free at reed.co.uk/developers/jobseeker, " +
-            "then paste your API key into jobsearcher.js.";
-        } else {
-          msg.textContent =
-            "Unable to fetch job vacancies. Please check your connection and try again.";
-        }
+        msg.textContent = "Unable to fetch job vacancies. Please check your connection and try again.";
       }
       console.error("Job search error:", error);
     });
@@ -157,6 +150,6 @@ function escapeHtml(str) {
 function escapeUrl(url) {
 
   if (!url || url === "#") return "#";
-  if (url.startsWith("http:
+  if (url.startsWith("http://") || url.startsWith("https://")) return url;
   return "#";
 }
