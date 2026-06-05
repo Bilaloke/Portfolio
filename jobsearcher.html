@@ -5,43 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Job Searcher – TaxWise</title>
   <link href="css/jobsearcher.css" rel="stylesheet" />
-  <style>
-    html { background-image: url(image/background.png); }
-  </style>
 </head>
 <body>
-
   <div class="contain">
-
     <section class="header">
       <div class="logo">
         <a href="Jobsearch.html"><img src="image/taxwise.png" alt="TaxWise logo" /></a>
       </div>
-
-    
       <nav class="writings" aria-label="Main navigation">
         <a href="index.html">Portfolio</a>
         <a href="Jobsearch.html">Home</a>
         <a href="taxcalc.html">Take Home Pay Calculator</a>
       </nav>
-
-      
       <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </section>
-
-    
     <nav class="mobile-nav" aria-label="Mobile navigation">
       <a href="index.html">Portfolio</a>
       <a href="Jobsearch.html">Home</a>
       <a href="taxcalc.html">Take Home Pay Calculator</a>
     </nav>
   </div>
-
-  
   <div class="body">
     <section class="top">
       <h1>Search for Job Vacancies in the UK</h1>
@@ -56,32 +43,26 @@
         <button type="button" id="locationBtn">Go</button>
       </div>
     </section>
-
     <section class="jobpreviews">
       <div class="results-info" id="resultsInfo">
         <p id="resultsCount"></p>
       </div>
-
       <div class="loading-state" id="loadingState">
         <div class="spinner"></div>
         <p>Fetching vacancies...</p>
       </div>
-
       <div class="error-state" id="errorState" style="display: none;">
         <h3>Oops! Something went wrong</h3>
         <p id="errorMessage">Unable to fetch job vacancies. Please try again later.</p>
         <button class="btn-primary" onclick="location.reload()">Retry</button>
       </div>
-
       <div class="no-results-state" id="noResultsState" style="display: none;">
         <h3>No results found</h3>
         <p>Try adjusting your search terms or filters</p>
       </div>
-
       <div class="vacancies-grid" id="vacanciesGrid"></div>
     </section>
   </div>
-
   <script src="Js/jobsearcher.js"></script>
   <script src="Js/navbar.js"></script>
 </body>
