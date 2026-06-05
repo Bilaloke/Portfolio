@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Job Searcher – TaxWise</title>
   <link href="css/jobsearcher.css" rel="stylesheet" />
+  <style>
+    html::before { background-image: url(image/background.png); }
+  </style>
 </head>
 <body>
   <div class="contain">
@@ -47,7 +50,7 @@
       <div class="results-info" id="resultsInfo">
         <p id="resultsCount"></p>
       </div>
-      <div class="loading-state" id="loadingState">
+      <div class="loading-state" id="loadingState" style="display: none;">
         <div class="spinner"></div>
         <p>Fetching vacancies...</p>
       </div>
