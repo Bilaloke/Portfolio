@@ -256,7 +256,7 @@ a {
   background-color:#1a1a1a;
   width:150px;
   height:150px;
-  padding: 3px 3px 9px 3px;
+  padding: 3px 3px 12px 3px;
 }
 .stats:hover{
   transform: translateY(-4px);
